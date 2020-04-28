@@ -92,91 +92,92 @@ if __name__== "__main__":
     if (res[0][0] == res[1][0]):
          if(res[0][0] > [2][0]):
            if(res[0][1] < res[1][1]):
-             ans[0] = ar[0]
-             ans[1] = ar[1]
+             ans.append(ar[0])
+             ans.append(ar[1])
              
            else:
-             ans[0] = ar[1]
-             ans[1] = ar[0]
-           ans[2] = ar[2]
+             ans.append(ar[1])
+             ans.append(ar[0])
+           ans.append(ar[2])
 
          else:
-           ans[0] = ar[2]  
+           ans.append(ar[2])  
            if(res[0][1] < res[1][1]):
-             ans[1] = ar[0]
-             ans[2] = ar[1]
+             ans.append(ar[0])
+             ans.append(ar[1])
            else:
-             ans[1] = ar[1]
-             ans[2] = ar[0]
+             ans.append(ar[1])
+             ans.append(ar[0])
 
     if (res[0][0] == res[2][0]):
          if(res[0][0] > [1][0]):
            if(res[0][1] < res[2][1]):
-             ans[0] = ar[0]
-             ans[1] = ar[2]
+             ans.append(ar[0])
+             ans.append(ar[2])
              
            else:
-             ans[0] = ar[2]
-             ans[1] = ar[0]
-           ans[2] = ar[1]
+             ans.append(ar[2])
+             ans.append(ar[0])
+           ans.append(ar[1])
 
          else:
-           ans[0] = ar[1]  
+           ans.append(ar[1])  
            if(res[0][1] < res[2][1]):
-             ans[1] = ar[0]
-             ans[2] = ar[2]
+             ans.append(ar[0])
+             ans.append(ar[2])
            else:
-             ans[1] = ar[2]
-             ans[2] = ar[0]
+             ans.append(ar[2])
+             ans.append(ar[0])
 
     if (res[1][0] == res[2][0]): 
          if(res[1][0] > [0][0]):
            if(res[1][1] < res[2][1]):
-             ans[0] = ar[1]
-             ans[1] = ar[2]
+             ans.append(ar[1])
+             ans.append(ar[2])
              
            else:
-             ans[0] = ar[2]
-             ans[1] = ar[1]
-           ans[2] = ar[0]
+             ans.append(ar[2])
+             ans.append(ar[1])
+           ans.append(ar[0])
 
          else:
-           ans[0] = ar[0]  
+           ans.append(ar[0])  
            if(res[1][1] < res[2][1]):
-             ans[1] = ar[1]
-             ans[2] = ar[2]
+             ans.append(ar[1])
+             ans.append(ar[2])
            else:
-             ans[1] = ar[2]
-             ans[2] = ar[1] 
+             ans.append(ar[2])
+             ans.append(ar[1]) 
 
     if ((res[0][0] > res[1][0])&(res[0][0] > res[2][0])):
-         ans[0] = ar[0]
+         ans.append(ar[0])
          if(res[1][0] > res[2][0]):
-           ans[1] = ar[1]
-           ans[2] = ar[2]
+           ans.append(ar[1])
+           ans.append(ar[2])
          else:
-           ans[1] = ar[2]
-           ans[2] = ar[1]
+           ans.append(ar[2])
+           ans.append(ar[1])
 
     elif ((res[1][0] > res[0][0])&(res[1][0] > res[2][0])):  
-         ans[0] = ar[1]
+         ans.append(ar[1])
          if(res[2][0] > res[0][0]):
-           ans[1] = ar[2]
-           ans[2] = ar[0]
+           ans.append(ar[2])
+           ans.append(ar[0])
          else:
-           ans[1] = ar[0]
-           ans[2] = ar[2]
+           ans.append(ar[0])
+           ans.append(ar[2])
 
     elif ((res[2][0] > res[0][0])&(res[2][0] > res[1][0])):  
-         ans[0] = a[2] 
+         ans.append(a[2]) 
          if(res[1][0] > res[0][0]):
-           ans[1] = ar[1]
-           ans[2] = ar[0]
+           ans.append(ar[1])
+           ans.append(ar[0])
          else:
-           ans[1] = ar[0]
-           ans[2] = ar[1]
-    for h in (0,3):
-      print((h+1)+' - '+ans[h])     
+           ans.append(ar[0])
+           ans.append(ar[1])
+    
+    print('1 - ',ans[0])
+    print('2 - ', ans[1])     
+    print('3 - ',ans[2])
     res.clear()     
     ans.clear()  
-
