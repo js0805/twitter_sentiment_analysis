@@ -75,102 +75,108 @@ if __name__== "__main__":
  data_from_date = input("Enter the date in the yyyy-mm-dd format:")
  ar = ["Samsung","OnePlus","iPhone"]
  lc = ["New York","San Francisco","Chicago","Bangalore","Mumbai","London"]
- res = []
-
-for j in range(0,6):
+ 
+ 
+ for j in range(0,6):
     location = lc[j]
-    for i in range(0,2):
+    res = []
+    for i in range(0,3):
        searchTerm = '#'+ar[i] 
        sa = SentimentAnalysis()
        list1 = sa.DownloadData()
        res.append(list1)
     print('Store '+lc[j])
     print('Shipping priority')    
+    ans = []
     
-    
-
-    if ((res[0][0] > res[1][0])&(res[0][0] > res[2][0])):
-         print('1 - '+ar[0])
-         if(res[1][0] > res[2][0]):
-           print('2 - '+ar[1])
-           print('3 - '+ar[2])
-         else:
-           print('2 - '+ar[2])
-           print('3 - '+ar[1])
-
-    elif ((res[1][0] > res[0][0])&(res[1][0] > res[2][0])):  
-         print('1 - '+ar[1])
-         if(res[2][0] > res[0][0]):
-           print('2 - '+ar[2])
-           print('3 - '+ar[0])
-         else:
-           print('2 - '+ar[0])
-           print('3 - '+ar[2])
-
-    elif ((res[2][0] > res[0][0])&(res[2][0] > res[1][0])):  
-         print('1 - '+a[2])  
-         if(res[1][0] > res[0][0]):
-           print('2 - '+ar[1])
-           print('3 - '+ar[0])
-         else:
-           print('2 - '+ar[0])
-           print('3 - '+ar[1])   
-    elif (res[0][0] == res[1][0]):
+    if (res[0][0] == res[1][0]):
          if(res[0][0] > [2][0]):
            if(res[0][1] < res[1][1]):
-             print('1 - '+ar[0])
-             print('2 - '+ar[1])
+             ans[0] = ar[0]
+             ans[1] = ar[1]
              
            else:
-             print('1 - '+ar[1])
-             print('2 - '+ar[0])
-           print('3 - '+ar[2])
+             ans[0] = ar[1]
+             ans[1] = ar[0]
+           ans[2] = ar[2]
 
          else:
-           print('1 - '+ar[2])  
+           ans[0] = ar[2]  
            if(res[0][1] < res[1][1]):
-             print('2 - '+ar[0])
-             print('3 - '+ar[1])
+             ans[1] = ar[0]
+             ans[2] = ar[1]
            else:
-             print('2 - '+ar[1])
-             print('3 - '+ar[0])
+             ans[1] = ar[1]
+             ans[2] = ar[0]
 
-    elif (res[0][0] == res[2][0]):
+    if (res[0][0] == res[2][0]):
          if(res[0][0] > [1][0]):
            if(res[0][1] < res[2][1]):
-             print('1 - '+ar[0])
-             print('2 - '+ar[2])
+             ans[0] = ar[0]
+             ans[1] = ar[2]
              
            else:
-             print('1 - '+ar[2])
-             print('2 - '+ar[0])
-           print('3 - '+ar[1])
+             ans[0] = ar[2]
+             ans[1] = ar[0]
+           ans[2] = ar[1]
 
          else:
-           print('1 - '+ar[1])  
+           ans[0] = ar[1]  
            if(res[0][1] < res[2][1]):
-             print('2 - '+ar[0])
-             print('3 - '+ar[2])
+             ans[1] = ar[0]
+             ans[2] = ar[2]
            else:
-             print('2 - '+ar[2])
-             print('3 - '+ar[0])
+             ans[1] = ar[2]
+             ans[2] = ar[0]
 
-    elif (res[1][0] == res[2][0]): 
+    if (res[1][0] == res[2][0]): 
          if(res[1][0] > [0][0]):
            if(res[1][1] < res[2][1]):
-             print('1 - '+ar[1])
-             print('2 - '+ar[2])
+             ans[0] = ar[1]
+             ans[1] = ar[2]
              
            else:
-             print('1 - '+ar[2])
-             print('2 - '+ar[1])
-           print('3 - '+ar[0])
+             ans[0] = ar[2]
+             ans[1] = ar[1]
+           ans[2] = ar[0]
 
          else:
-           print('1 - '+ar[0])  
+           ans[0] = ar[0]  
            if(res[1][1] < res[2][1]):
-             print('2 - '+ar[1])
-             print('3 - '+ar[2])
+             ans[1] = ar[1]
+             ans[2] = ar[2]
            else:
-             print('2 - '+ar[2])
-             print('3 - '+ar[1]) 
+             ans[1] = ar[2]
+             ans[2] = ar[1] 
+
+    if ((res[0][0] > res[1][0])&(res[0][0] > res[2][0])):
+         ans[0] = ar[0]
+         if(res[1][0] > res[2][0]):
+           ans[1] = ar[1]
+           ans[2] = ar[2]
+         else:
+           ans[1] = ar[2]
+           ans[2] = ar[1]
+
+    elif ((res[1][0] > res[0][0])&(res[1][0] > res[2][0])):  
+         ans[0] = ar[1]
+         if(res[2][0] > res[0][0]):
+           ans[1] = ar[2]
+           ans[2] = ar[0]
+         else:
+           ans[1] = ar[0]
+           ans[2] = ar[2]
+
+    elif ((res[2][0] > res[0][0])&(res[2][0] > res[1][0])):  
+         ans[0] = a[2] 
+         if(res[1][0] > res[0][0]):
+           ans[1] = ar[1]
+           ans[2] = ar[0]
+         else:
+           ans[1] = ar[0]
+           ans[2] = ar[1]
+    for h in (0,3):
+      print((h+1)+' - '+ans[h])     
+    res.clear()     
+    ans.clear()  
+
