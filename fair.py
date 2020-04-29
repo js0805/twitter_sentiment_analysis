@@ -85,7 +85,6 @@ if __name__== "__main__":
        sa = SentimentAnalysis()
        list1 = sa.DownloadData(i,j)
        res.append(list1)
-       print(list1)
     print('Store '+lc[j])
     print('Shipping priority')    
     ans = []
