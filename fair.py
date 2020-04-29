@@ -8,7 +8,7 @@ class SentimentAnalysis:
                         self.tweets = []
                         self.tweetText = []
                 
-                    def DownloadData(self):
+                    def DownloadData(self, i, j):
                         
                         consumerKey = '2NYmSxHedbEaGN1mlmjkZBHZk'
                         consumerSecret = 'U7IPpFr2IMIlDTarytGTWx6QIQI6o0W6XM8dCW7OK3cqG9SeZA'
@@ -18,7 +18,7 @@ class SentimentAnalysis:
                         auth.set_access_token(accessToken, accessTokenSecret)
                         api = tweepy.API(auth,wait_on_rate_limit=True)                
                                               
-                        self.tweets = tweepy.Cursor(api.search, q=searchTerm, lang = "en",since=data_from_date,place_id = location).items(NoOfTerms)
+                        self.tweets = tweepy.Cursor(api.search, q=ar[i], lang = "en",since=data_from_date,place_id = lc[j]).items(NoOfTerms)
                                         
                         csvFile = open('result.csv', 'a')
                                        
@@ -83,8 +83,9 @@ if __name__== "__main__":
     for i in range(0,3):
        searchTerm = '#'+ar[i] 
        sa = SentimentAnalysis()
-       list1 = sa.DownloadData()
+       list1 = sa.DownloadData(i,j)
        res.append(list1)
+       print(list1)
     print('Store '+lc[j])
     print('Shipping priority')    
     ans = []
@@ -168,7 +169,7 @@ if __name__== "__main__":
            ans.append(ar[2])
 
     elif ((res[2][0] > res[0][0])&(res[2][0] > res[1][0])):  
-         ans.append(a[2]) 
+         ans.append(ar[2]) 
          if(res[1][0] > res[0][0]):
            ans.append(ar[1])
            ans.append(ar[0])
@@ -179,5 +180,8 @@ if __name__== "__main__":
     print('1 - ',ans[0])
     print('2 - ', ans[1])     
     print('3 - ',ans[2])
+    
+    
     res.clear()     
     ans.clear()  
+    
