@@ -4,10 +4,14 @@ import matplotlib.pyplot as plt
 
 class SentimentAnalysis:         
                 
+                    
+
                     def __init__(self):
                         self.tweets = []
                         self.tweetText = []
-                
+
+                    
+
                     def DownloadData(self, i, j):
                         
                         consumerKey = '2NYmSxHedbEaGN1mlmjkZBHZk'
@@ -68,119 +72,59 @@ class SentimentAnalysis:
                         plt.axis('equal')
                         plt.tight_layout()
                         plt.show()
+def Sort(res): 
+    # key is set to sort using second element of sublist lambda has been used 
+    res.sort(reverse = True, key = lambda x: x[1]) 
+    return res
+  
                     
 if __name__== "__main__":
  
  NoOfTerms = int(input("Enter how many tweets to search: "))
  data_from_date = input("Enter the date in the yyyy-mm-dd format:")
- ar = ["Samsung","OnePlus","iPhone"]
+ ar = ["iPhone","OnePlus","Samsung"]
  lc = ["New York","San Francisco","Chicago","Bangalore","Mumbai","London"]
+ no_of_loc = len(lc)
+ no_of_items = len(ar)
  
- 
- for j in range(0,6):
+ for j in range(0,no_of_loc):
     location = lc[j]
     res = []
-    for i in range(0,3):
+    
+    for i in range(0, no_of_items):
        searchTerm = '#'+ar[i] 
        sa = SentimentAnalysis()
-       list1 = sa.DownloadData(i,j)
+       list = sa.DownloadData(i,j)
+       list1 = []
+       list1.append(ar[i])
+       for l in range(0,3):
+         list1.append(list[l])
+       
        res.append(list1)
+    res1 = Sort(res)   
     print('Store '+lc[j])
+    print(res1)
     print('Shipping priority')    
     ans = []
+    x = 0
     
-    if (res[0][0] == res[1][0]):
-         if(res[0][0] > [2][0]):
-           if(res[0][1] < res[1][1]):
-             ans.append(ar[0])
-             ans.append(ar[1])
-             
-           else:
-             ans.append(ar[1])
-             ans.append(ar[0])
-           ans.append(ar[2])
-
-         else:
-           ans.append(ar[2])  
-           if(res[0][1] < res[1][1]):
-             ans.append(ar[0])
-             ans.append(ar[1])
-           else:
-             ans.append(ar[1])
-             ans.append(ar[0])
-
-    if (res[0][0] == res[2][0]):
-         if(res[0][0] > [1][0]):
-           if(res[0][1] < res[2][1]):
-             ans.append(ar[0])
-             ans.append(ar[2])
-             
-           else:
-             ans.append(ar[2])
-             ans.append(ar[0])
-           ans.append(ar[1])
-
-         else:
-           ans.append(ar[1])  
-           if(res[0][1] < res[2][1]):
-             ans.append(ar[0])
-             ans.append(ar[2])
-           else:
-             ans.append(ar[2])
-             ans.append(ar[0])
-
-    if (res[1][0] == res[2][0]): 
-         if(res[1][0] > [0][0]):
-           if(res[1][1] < res[2][1]):
-             ans.append(ar[1])
-             ans.append(ar[2])
-             
-           else:
-             ans.append(ar[2])
-             ans.append(ar[1])
-           ans.append(ar[0])
-
-         else:
-           ans.append(ar[0])  
-           if(res[1][1] < res[2][1]):
-             ans.append(ar[1])
-             ans.append(ar[2])
-           else:
-             ans.append(ar[2])
-             ans.append(ar[1]) 
-
-    if ((res[0][0] > res[1][0])&(res[0][0] > res[2][0])):
-         ans.append(ar[0])
-         if(res[1][0] > res[2][0]):
-           ans.append(ar[1])
-           ans.append(ar[2])
-         else:
-           ans.append(ar[2])
-           ans.append(ar[1])
-
-    elif ((res[1][0] > res[0][0])&(res[1][0] > res[2][0])):  
-         ans.append(ar[1])
-         if(res[2][0] > res[0][0]):
-           ans.append(ar[2])
-           ans.append(ar[0])
-         else:
-           ans.append(ar[0])
-           ans.append(ar[2])
-
-    elif ((res[2][0] > res[0][0])&(res[2][0] > res[1][0])):  
-         ans.append(ar[2]) 
-         if(res[1][0] > res[0][0]):
-           ans.append(ar[1])
-           ans.append(ar[0])
-         else:
-           ans.append(ar[0])
-           ans.append(ar[1])
-    
-    print('1 - ',ans[0])
-    print('2 - ', ans[1])     
-    print('3 - ',ans[2])
-    
-    
+    while (x != no_of_items-1):
+      if(res1[x][1] == res1[x+1][1]):
+        if(res1[x][2] < res1[x+1][2]):
+           ans.append(ar[x])
+           x = x+1
+        else:
+           ans.append(ar[x+1])
+           ans.append(ar[x])
+           x = x+2
+      else:
+        ans.append(ar[x])     
+        x = x+1
+    ans.append(ar[no_of_items-1])    
+    print(ans)
+    h = 1
+    for k in range (0, no_of_items):
+      print(h,' - ',ans[k])
+      h = h+1
     res.clear()     
     ans.clear()  
-    
