@@ -2,11 +2,12 @@ import sys,tweepy,csv,re
 from tweepy import StreamListener
 from textblob import TextBlob
 import datetime
+
 class TweetListener(StreamListener):
             def on_status(self, status):
-                  startDate = datetime.datetime(2015, 7, 21)
-                  stopDate = datetime.datetime(2015, 7, 22)
-# class sentiment analysis is called by the main function.
+                  startDate = datetime.datetime(2020,1,1)
+                  stopDate = datetime.datetime(2020,1,2)
+# class sestiment analysis is called by the main function.
 # This class contains the function which access data requiring to fetching tweets..
 #  .., cleaning the tweets from special characters and returning the number of tweets (positive, negative and neutral).
 class SentimentAnalysis:         
